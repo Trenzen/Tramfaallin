@@ -12,24 +12,30 @@ public class allCollisionDetector : MonoBehaviour
     // Start is called before the first frame update
     void OnCollisionEnter(Collision other)
     {
-        if(other.gameObject.tag == trampolineTarget.tag)
+        if(other.gameObject != null)
         {
-            toJump();
-        }
-        if(other.gameObject.tag == "floor")
-        {
-            isGrounded = true;
+            if(other.gameObject.tag == trampolineTarget.tag)
+            {
+                toJump(other);
+            }
+            if(other.gameObject.tag == "floor")
+            {
+                isGrounded = true;
+            }
         }
 
     }
-    void toJump()
+    void toJump(Collision collisionInfo)
     {
-        if(isGrounded == true)
+        if(collisionInfo.gameObject != null)
         {
-            rb.AddForce(new Vector3(0, movementSpeed + counter, 0), ForceMode.Impulse);
-            counter ++;
-            Debug.Log(counter);
-            isGrounded = false;
+            if(isGrounded == true)
+            {
+                rb.AddForce(new Vector3(0, movementSpeed + counter, 0), ForceMode.Impulse);
+                counter ++;
+                Debug.Log(counter);
+                isGrounded = false;
+            }
         }
     }
 }

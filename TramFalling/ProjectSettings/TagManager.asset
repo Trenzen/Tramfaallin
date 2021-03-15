@@ -6,6 +6,9 @@ TagManager:
   tags:
   - trampoline
   - floor
+  - transferTrampoline
+  - EarthGrass
+  - EarthDesert
   layers:
   - Default
   - TransparentFX
